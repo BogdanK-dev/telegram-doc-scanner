@@ -1,55 +1,55 @@
-<img src=".github/banner.svg" width="100%" alt="Doc Scanner. Фото документа → чистый PDF.">
+<img src=".github/banner.svg" width="100%" alt="Doc Scanner. Document photo in. Clean PDF out.">
 
-Telegram-бот. Отправь фото документа — получи скан в PDF.
+Telegram bot. Send a photo of a document — get a scanned PDF back.
 
-Бот сам находит края листа, выравнивает перспективу и убирает тени.
+It finds the page edges, fixes the perspective and removes shadows. On its own.
 
-## Что умеет
+## What it does
 
-- **Скан.** Края листа, перспектива, тени — автоматически.
-- **Фильтры.** Ч/Б, Серый, Цвет, Оригинал.
-- **PDF.** Несколько фото или альбом — один файл A4.
-- **Удостоверение.** Обе стороны на одном листе A4, в натуральную величину.
-- **Текст.** Распознаёт русский, казахский, английский. PDF с поиском.
-- **Язык.** Интерфейс на русском и английском.
+- **Scan.** Page edges, perspective, shadows — automatic.
+- **Filters.** B/W, Gray, Color, Original.
+- **PDF.** Several photos or an album — one A4 file.
+- **ID card.** Both sides on one A4 sheet, true size.
+- **Text.** Reads Russian, Kazakh, English. Searchable PDF.
+- **Language.** Interface in English and Russian.
 
-## Приватность
+## Privacy
 
-Всё работает на твоём компьютере. Никаких сторонних сервисов.
-Документы живут только в памяти и стираются через 24 часа.
-На диск пишется одно: выбранный язык (`prefs.json`).
+Everything runs on your machine. No third-party services.
+Documents live in memory only and are wiped after 24 hours.
+One thing is written to disk: the chosen language (`prefs.json`).
 
-## Запуск (Windows)
+## Run (Windows)
 
-1. Создай бота у [@BotFather](https://t.me/BotFather): `/newbot`. Сохрани токен.
-2. Поставь [Python](https://www.python.org/downloads/). Отметь **Add python.exe to PATH**.
-3. `install_ocr.bat` — распознавание текста. Можно пропустить.
-4. `start.bat` — вставь токен. Бот запущен.
-5. `autostart.bat` — старт вместе с Windows. Повторный запуск выключает.
+1. Create a bot with [@BotFather](https://t.me/BotFather): `/newbot`. Keep the token.
+2. Install [Python](https://www.python.org/downloads/). Tick **Add python.exe to PATH**.
+3. `install_ocr.bat` — text recognition. Optional.
+4. `start.bat` — paste the token. The bot is live.
+5. `autostart.bat` — start with Windows. Run it again to turn it off.
 
-Бот работает, пока открыто окно и компьютер не спит.
+The bot works while its window is open and the machine is awake.
 
-## Настройки — `.env`
+## Settings — `.env`
 
-| Параметр | Что делает |
+| Key | What it does |
 |---|---|
-| `BOT_TOKEN` | Токен от @BotFather |
-| `ALLOWED_USERS` | Кому доступ: ID или @username через запятую. Пусто — всем. Свой ID: `/myid` |
-| `OCR_LANG` | Языки распознавания. По умолчанию `rus+kaz+eng` |
-| `TESSERACT_CMD` | Путь к `tesseract.exe`, если не найден сам |
-| `DEFAULT_FILTER` | Фильтр новых страниц: `bw`, `gray`, `color`, `orig` |
+| `BOT_TOKEN` | Token from @BotFather |
+| `ALLOWED_USERS` | Who gets access: IDs or @usernames, comma-separated. Empty — everyone. Your ID: `/myid` |
+| `OCR_LANG` | Recognition languages. Default `rus+kaz+eng` |
+| `TESSERACT_CMD` | Path to `tesseract.exe` if it is not found automatically |
+| `DEFAULT_FILTER` | Filter for new pages: `bw`, `gray`, `color`, `orig` |
 
-После правки — перезапусти бота.
+Restart the bot after any change.
 
-## Если не работает
+## Troubleshooting
 
-| Проблема | Решение |
+| Problem | Fix |
 |---|---|
-| Бот молчит | Окно открыто? Компьютер не спит? Интернет есть? Лог: `bot.log` |
-| Нет кнопки «Распознать текст» | Запусти `install_ocr.bat`, перезапусти бота |
-| «Границы листа не определены» | Тёмный однотонный фон, все четыре угла в кадре |
-| «Файл превышает 20 МБ» | Лимит Telegram. Отправь как фото |
+| Bot is silent | Window open? Machine awake? Internet up? Log: `bot.log` |
+| No "Recognize text" button | Run `install_ocr.bat`, restart the bot |
+| "Page borders not detected" | Dark plain background, all four corners in frame |
+| "The file exceeds 20 MB" | Telegram limit. Send it as a photo |
 
-## Стек
+## Stack
 
 Python · aiogram 3 · OpenCV · Pillow · pypdf · Tesseract
